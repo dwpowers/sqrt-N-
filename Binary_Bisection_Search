@@ -1,0 +1,127 @@
+import math
+
+#Part 1
+def linearSearch (A,target):
+    for x in range(len(A)):
+        if (F[x]==target):
+            return x
+    return False
+
+F = range(100)
+target = 15
+print "Question 1:"
+print "Running LinearSearch for {} in range {} is: {}".format(target, len(F),linearSearch(F,target))
+print " "
+
+#Part 2
+def linearSearch_sqrt(N):       
+    epsilon = 0.001
+    x = 0.000
+    while x*x < N - epsilon:  
+        x += epsilon          
+    return x                  
+Z = 15
+from math import sqrt
+print "Question 2:"
+print "LinearSearch_sqrt of {} is: {}".format(Z,linearSearch_sqrt(Z))
+print "Sanity Check for sqrt of {} is: {}".format(Z,sqrt(Z))
+print " "
+
+#Part 3
+def binarySearch(A, target):
+    low = 0
+    high = len(A) - 1
+    idx = False
+    while low <= high and not idx:
+        mid = low + (high - low) / 2
+        print "LOW {} HI {} MID {}, comparing {} to {}".format(low,high,mid,target,A[mid])
+        if A[mid] == target:
+            print "BinarySearch results in:"
+            return mid
+        if A[mid] > target:
+            high = mid - 1
+        else:
+            low = mid + 1
+    return False
+
+F = range(33)
+target = 9
+print "Question 3:"
+print "Looking for [{}] in array {}".format(target,F)
+print binarySearch (F,target)
+print " "
+
+#Part 5
+def bisection_search_kth_root(N, k):
+    low = 0
+    high = 1000000
+    idx = False
+    epsilon = 0.001
+    x = 0.000  
+    while x**k < len(N)- epsilon: 
+        x += epsilon           
+    while low <= high and not idx:
+        mid = low + (high - low) / 2
+        print "LOW {} HI {} MID {}, comparing {} to {}".format(low,high,mid,len(F),mid)
+        if mid == x**k:
+            
+            return mid
+        if mid > x**k:
+            high = mid - epsilon
+        else:
+            low = mid + epsilon
+    print " "
+    print "{} to the root {} is: ".format(len(F),target)
+    return x
+
+F = range(100)  
+target = 5
+print "Question 5: "
+print "Looking for of {} root {} in range {} to {}".format(len(F), target, low, high)
+print bisection_search_kth_root(F,target)
+print " "
+
+#Part 7
+def log_approx(N): 
+    return N * math.log(N, 2) - N + 1
+
+def bisection_search_lgN(N):
+    low = 0
+    high = 0.001
+    idx = False
+    epsilon = 0.001
+    constraint = 2**40
+    while log_approx(high) < constraint:
+        high *= 2
+    while log_approx(N) != constraint:
+        mid = low + (high - low) / 2
+        N = mid
+        print "LOW {} HI {} MID {}".format(low,high,mid)
+        if log_approx(N) <= constraint and log_approx(N) > constraint - epsilon:
+            print " "
+            print "The Largest Amount for N! using biSection_Search_lgN is:"
+            return N
+        elif log_approx(N) < constraint:
+            low = N
+        else:
+            high =N
+    return False
+
+print "Question 7: "
+print bisection_search_lgN(1)
+print " "
+
+#Part 8
+def newton_sqrt(k):
+    epsilon = .001
+    y = k / 2.0 #guess
+    while abs(y*y-k) >= epsilon:
+        y = y - (((y**2) - k)/(2*y))
+    return y
+
+R = 56
+print "Question 8:"
+print "The Newton sqrt for {} is: {}".format(R,newton_sqrt(R))
+
+
+
