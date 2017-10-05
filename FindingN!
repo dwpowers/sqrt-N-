@@ -1,0 +1,20 @@
+import math
+
+def bisection_search_lgN(N):
+    low = 0
+    high = 0.001
+    idx = False
+    constraint = 2**40
+    epsilon = 0.001
+    x = 0.000  
+    
+    while high* math.log(high, 2) - high +1 < constraint: 
+        high = high *2          
+#        print "high is:", high
+#    return high
+    while math.log(math.factorial(x),2) < math.log(high,2):
+        x = x + 1
+        print "x is:", x
+        
+F = 40
+print bisection_search_lgN(F)
